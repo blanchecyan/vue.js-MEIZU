@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div id="test">
+		<input type="text" v-model="b"><h3>{{b}}</h3>
+	</div>
+<script type="text/javascript" src="js/lib/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+
+	　　el: "#test",  // 挂载到页面的那个元素里，即确定vue的作用范围  外部可通过vm.$el访问，得到的是一个原生dom元素，可进行对应操作
+
+	　　// a: 'HelloWord',  //自定义属性  外部可通过vm.$options访问
+
+	　　data: { b: '' }, //实例属性都在这里面，外部通过实例名,即vm.$data调用
+
+	　　computed: { }, //计算属性，也是实例属性，只是以方法的形式存在，并可以有逻辑运算的属性
+
+	　　method: { }, //实例方法都在这里
+
+	　　watch: { }, //对data和computed的属性进行监听，当属性有变化时自动触发，以方法的形式存在 外部通过$.watch调用
+
+	　　//注意：以上属性和方法，实例内部都通过this调用,外部则通过对应的实例方法访问
+
+	　　//在vue的生命周期过程中，它自身还提供了一系列的钩子函数供我们使用，进行自定义逻辑的注入：　　　
+
+	　　created: function(){ console.log('实例已经创建');},
+
+	　　beforeCompile: function(){ console.log('模块编译之前');},
+
+	　　compiled: function(){ console.log('模块编译之后；即模板占位符被是内容替换')},
+
+	　　ready: function(){ console.log('模板插入到文档中了；相当于window.onload');},//Vue2.0已改为mounted
+
+		// 注意： 以上4个方法在对象被实例化后即按顺序执行，以下2个方法需通过事件触发，并通过调用 实例名.$destory() 才执行
+
+	　　beforeDestroy: function(){ console.log('对象销毁之前');},
+
+	　　destroyed: function(){ console.log('对象销毁之后');}
+
+	});
+	// 2.0
+	/*var myVue = new Vue({
+	el: "#test",
+	data: {
+	a: "HelloWord"
+	},
+	beforeCreate: function() {
+	console.log("创建前")
+	console.log(this.a)
+	console.log(this.$el)
+	},
+	created: function() {
+	console.log("创建之后");
+	console.log(this.a)
+	console.log(this.$el)
+	},
+	beforeMount: function() {
+	console.log("mount之前")
+	console.log(this.a)
+	console.log(this.$el)
+	},
+	mounted: function() {
+	console.log("mount之后")
+	console.log(this.a)
+	console.log(this.$el)
+	},
+	beforeUpdate: function() {
+	console.log("更新前");
+	console.log(this.a)
+	},
+	updated: function() {
+	console.log("更新完成");
+	console.log(this.a)
+	},
+	beforeDestroy: function() {
+	console.log("销毁前");
+	console.log(this.a)
+	console.log(this.$el)
+	},
+	destroyed: function() { 
+	console.log("已销毁");
+	console.log(this.a)
+	console.log(this.$el)
+	}
+	});*/
+</script>
+</body>
+</html>
